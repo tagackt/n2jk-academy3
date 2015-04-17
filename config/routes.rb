@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'users/show'
-
-  get 'sessions/create'
-
-  get 'home/index'
-  root 'home#index'
-
   get 'users/auth/github/callback' => 'sessions#create'
 
   resources :users do
@@ -16,4 +8,5 @@ Rails.application.routes.draw do
   end
   devise_for :users
 
+  root 'home#index'
 end
