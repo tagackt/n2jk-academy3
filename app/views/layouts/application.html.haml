@@ -7,4 +7,33 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    .navbar.navbar-default
+      .container
+        .navibar-header
+          %a.navbar-brand.logo{href: '/'}
+            = image_tag 'n2jkAcademy-logo.png'
+          - if user_signed_in?
+            %ul.nav.navbar-nav
+              %li
+                %button.btn.btn-primary
+                  = fa_icon('home', text: 'ホーム')
+              %li
+                %button.btn.btn-primary.js-write-report
+                  = fa_icon('pencil-square-o', text: '週報を書く')
+              -#%li
+              -#  %button.btn.btn-primary.js-write-message
+              -#    = fa_icon('pencil-square-o', text: '連絡を書く')
+        .navbar-header.navbar-right
+          %ul.nav.navbar-nav
+            - if user_signed_in?
+              %li.dropdown
+                %a.dropdown-toggle{href: '/', 'data-toggle' => 'dropdown'}
+                  = current_user.name
+                %ul.dropdown-menu
+                  %li
+                    %a
+                      = fa_icon 'cog'
+                      アカウント設定
+                  %li
+                    = link_to fa_icon('sign-out', text: 'ログアウト'), destroy_user_session_path, :method => :delete
     = yield

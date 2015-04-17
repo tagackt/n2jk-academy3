@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @comment.user_id
+%p
+  %b Body:
+  = @comment.body
+%p
+  %b Resource:
+  = @comment.resource_id
+%p
+  %b Resource type:
+  = @comment.resource_type
+
+= link_to 'Edit', edit_comment_path(@comment)
+\|
+= link_to 'Back', comments_path
