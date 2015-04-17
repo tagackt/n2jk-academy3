@@ -5,8 +5,7 @@
     【何を書けば良いの？】
   %p
     あなたが週報で書くのは「学び」です。何を学んだか書いてください。他の人にも共有して意味があるように書きましょう。「学び」を書くために、学びのきっかけとなった出来事なども補足で書くといいでしょう。学びを抽出するスキルは成長には不可欠です。
-  - @report = Report.new
-  = simple_form_for [@user, @report], data: { remote: true } do |f|
+  = simple_form_for [@user, Report.new], data: { remote: true } do |f|
     = f.error_notification
 
     .form-inputs
@@ -20,10 +19,31 @@
 - @reports = @user.reports.order(created_at: :desc)
 - @reports.each do |report|
   .label.label-info
-    = l report.created_at.to_date
-  %br
+    = l report.created_at
+  %p
   = markdown(report.body)
-  %br
+  %p
+
+  - @comments = report.comments.includes(:user).order(created_at: :desc)
+  - @comments.each do |comment|
+    %img.user_icon{:src => comment.user.image}
+    = comment.body
+    = comment.user.name
+    = l comment.created_at
+    %p
+
+  = simple_form_for [@user, report, Comment.new], data: {remote: true} do |f|
+
+    .form-inputs
+      = f.hidden_field :user_id, value: current_user.id
+      = f.input :body, label: false
+      = f.hidden_field :resource_id, value: report.id
+      = f.hidden_field :resource_type, value: 'Report'
+
+    .form-actions
+      = f.button :submit, 'コメントする', class: 'btn btn-primary'
+  %p
+
 -#%td= link_to 'Show', report
 -#%td= link_to 'Edit', edit_report_path(report)
 -#%td= link_to 'Destroy', report, :method => :delete, :data => { :confirm => 'Are you sure?' }
