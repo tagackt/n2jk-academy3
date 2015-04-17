@@ -24,8 +24,9 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
-      redirect_to @report, notice: 'Report was successfully created.'
+      redirect_to controller: :users, action: :show, id: params[:user_id]
     else
+      #TODO 失敗した場合・・
       render :new
     end
   end
