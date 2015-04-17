@@ -451,6 +451,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    unread (0.5.0)
+      activerecord (>= 3)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.2.1)
@@ -514,3 +516,4 @@ DEPENDENCIES
   turbolinks
   uglifier
   unicorn
+  unread

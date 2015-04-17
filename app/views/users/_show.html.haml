@@ -16,7 +16,6 @@
       = f.button :submit, class: 'btn btn-primary'
 
 %p
-- @reports = @user.reports.order(created_at: :desc)
 - @reports.each do |report|
   .label.label-info
     = l report.created_at

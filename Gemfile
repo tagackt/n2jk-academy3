@@ -29,6 +29,7 @@ gem 'pg'
 gem 'dotenv-rails'
 gem 'sprockets'
 gem 'redcarpet'
+gem 'unread'
 
 group :development do
   gem 'better_errors'
