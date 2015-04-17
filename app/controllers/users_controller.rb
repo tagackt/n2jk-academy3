@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @reports = @user.reports.order(created_at: :desc)
+    @reports = @user.reports
 
     #TODO 一気にreadにしたい・・・・
     @reports.each do |report|
