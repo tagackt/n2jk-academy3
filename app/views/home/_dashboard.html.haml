@@ -1,16 +1,6 @@
 .row
   .col-sm-2
-    %table.table.table-striped
-      %tbody
-        - @users.includes(:reports).each do |user|
-          %tr
-            %td
-              %img.user_icon{:src => user.image}
-            %td
-              =link_to user.name, user_path(user), remote: true
-              - unread_reports = user.reports.unread_by(current_user)
-              - if unread_reports.present?
-                %p
-                未読有（#{unread_reports.size}件）
+    #users
+      = render 'users/index', users: @users
   .col-sm-10
     .js-main-page
