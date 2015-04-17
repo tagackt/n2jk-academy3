@@ -28,6 +28,8 @@ gem 'squeel'
 gem 'pg'
 gem 'dotenv-rails'
 gem 'sprockets'
+gem 'redcarpet'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
