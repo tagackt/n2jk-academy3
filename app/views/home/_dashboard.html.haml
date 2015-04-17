@@ -1,1 +1,12 @@
-hoge
+.row
+  .col-sm-2
+    %table.table.table-striped
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td
+              %img.user_icon{:src => user.image}
+            %td
+              =link_to user.name, user_path(user), :remote => true
+  .col-sm-10
+    .js-main-page
