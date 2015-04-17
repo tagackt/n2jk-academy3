@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
+  get 'sessions/create'
 
+  get 'home/index'
   root 'home#index'
-  get 'hoge/index'
+
+  get 'users/auth/github/callback' => 'sessions#create'
 
   resources :comments
   resources :reports

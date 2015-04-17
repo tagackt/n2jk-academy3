@@ -1,0 +1,6 @@
+- if user_signed_in?
+  = render 'dashboard'
+- else
+  %h1 n2jkAcademy3
+  = link_to fa_icon('github', text: 'GitHubで新規登録/ログイン'), 'users/auth/github', class: 'btn btn-primary'
+
