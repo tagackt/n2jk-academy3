@@ -14,8 +14,9 @@
       = f.input :body, label: false, class: 'report-input', as: :text, :input_html => { 'rows' => 13 }
 
     .form-actions
-      = f.button :submit
+      = f.button :submit, class: 'btn btn-primary'
 
+%p
 - @reports = @user.reports.order(created_at: :desc)
 - @reports.each do |report|
   .label.label-info
