@@ -4,6 +4,8 @@ class Report < ActiveRecord::Base
 
   acts_as_readable on: :created_at
 
+  after_save :mark_as_read_for_posted_user
+
   def title
     body.lines.first
   end
@@ -19,5 +21,9 @@ class Report < ActiveRecord::Base
   def notify_other_users
     return if notification_to.blank?
     Notification.report_posted(self).deliver!
+  end
+
+  def mark_as_read_for_posted_user
+    mark_as_read!(for: user)
   end
 end
