@@ -18,5 +18,4 @@ class User < ActiveRecord::Base
         auth_hash: auth
     )
   end
-
 end

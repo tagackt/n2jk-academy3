@@ -1,0 +1,6 @@
+%p
+  #{@post_user.name} さんから日報が投稿されたよー
+
+= simple_format @report.body_without_title
+
+%p= link_to '今すぐここでチェックしよう！', root_url
