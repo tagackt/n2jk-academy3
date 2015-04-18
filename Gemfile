@@ -45,6 +45,7 @@ group :development do
   gem 'annotate'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'pry', '< 0.10.0'
   gem 'pry-rails'
   gem 'html2haml'
 end

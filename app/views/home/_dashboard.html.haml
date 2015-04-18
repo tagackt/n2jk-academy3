@@ -1,16 +1,6 @@
 .row
   .col-sm-2
-    %table.table.table-striped
-      %tbody
-        - @users.each do |user|
-          %tr
-            %td
-              %img.user_icon{:src => user.image}
-            %td
-              =link_to user.name, user_path(user), :remote => true
-              - reports = Report.unread_by(current_user).where(user_id: user.id)
-              - if reports.length > 0
-                %p
-                未読有（#{reports.length}件）
+    #users
+      = render 'users/index', users: @users
   .col-sm-10
     .js-main-page

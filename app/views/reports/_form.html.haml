@@ -1,9 +1,12 @@
-= simple_form_for(@report) do |f|
+%p
+  【何を書けば良いの？】
+%p
+  あなたが週報で書くのは「学び」です。何を学んだか書いてください。他の人にも共有して意味があるように書きましょう。「学び」を書くために、学びのきっかけとなった出来事なども補足で書くといいでしょう。学びを抽出するスキルは成長には不可欠です。
+= simple_form_for [user, Report.new], data: { remote: true } do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :user_id
-    = f.input :body
+    = f.input :body, label: false, class: 'report-input', as: :text, input_html: { rows: 13 }
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-primary'
